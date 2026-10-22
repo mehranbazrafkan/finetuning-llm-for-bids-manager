@@ -1,0 +1,33 @@
+# Fine-tuning stack for gemma-3-270m-it (BIDS-Manager assistant)
+#
+# Versions verified working together on Python 3.10 (Windows, torch CPU).
+# On the GPU server, install torch FIRST (see below), then this file.
+
+transformers==4.57.6
+trl==1.14.1
+peft==0.21.2
+accelerate==1.15.0
+datasets==5.0.1
+tokenizers==0.22.2
+huggingface_hub==0.36.2
+
+# NOTE on torch / torchvision / torchaudio:
+# -------------------------------------------------------------
+# These are NOT listed above on purpose. The correct build depends on
+# your server's CUDA version, and installing the default PyPI wheel
+# gives you a CPU-ONLY torch (silent — training just runs on CPU).
+#
+# Install the CUDA build explicitly BEFORE the rest, e.g. for CUDA 12.6:
+#
+#   pip install torch==2.14.1 torchvision==0.29.1 \
+#       --index-url https://download.pytorch.org/whl/cu126
+#
+# Other indexes (replace cu126 as needed):
+#   cu128 -> https://download.pytorch.org/whl/cu128
+#   cu129 -> https://download.pytorch.org/whl/cu129
+#   CPU   -> https://download.pytorch.org/whl/cpu
+#
+# Verify it worked with:
+#   python -c "import torch; print(torch.__version__, torch.cuda.is_available())"
+# You want the version string to contain '+cu' and the second value True.
+# -------------------------------------------------------------
