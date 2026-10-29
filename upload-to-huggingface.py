@@ -24,8 +24,9 @@
 from pathlib import Path
 from huggingface_hub import HfApi
 
-model_path = Path("./output/qwen3-1.7B-finetuned")
-repo_id = "MehranBazrafkan/qwen3-1.7B-bids-finetuned"
+model_name = "qwen3-1.7B-bids-finetuned"
+model_path = Path(f"./output/{model_name}")
+repo_id = f"MehranBazrafkan/{model_name}"
 
 # Verify the local model directory.
 if not model_path.is_dir():

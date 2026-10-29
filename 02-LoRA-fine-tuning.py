@@ -18,7 +18,8 @@ DATASET_FILE = DATA_DIR / "knowledge-fine-tune-dataset.jsonl"
 OUTPUT_DIR = BASE_DIR / "output"
 # MODEL_ID = "google/gemma-3-270m-it"
 # MODEL_ID = "Qwen/Qwen3-1.7B"
-MODEL_ID = "meta-llama/Llama-3.1-8B"
+# MODEL_ID = "meta-llama/Llama-3.1-8B"  # base model: no chat_template, breaks SFTTrainer
+MODEL_ID = "meta-llama/Llama-3.1-8B-Instruct"  # ships the official Llama-3.1 chat template
 LORA_OUTPUT_DIR = OUTPUT_DIR / f"{MODEL_ID.replace('/', '_')}-lora"
 FINAL_OUTPUT_DIR = OUTPUT_DIR / f"{MODEL_ID.replace('/', '_')}-finetuned"
 
